@@ -179,8 +179,8 @@ cut -f 2-5 file.csv
   cut -d '\t' -f 2-4 file.tsv
   ```
 
-> [!TIP] <b> Remember:
->The `-d` option is crucial for specifying the delimiter character used in your data. Common delimiters include commas (,), tabs (\t), and spaces.
+> [!TIP]
+> The `-d` option is crucial for specifying the delimiter character used in your data. Common delimiters include commas (,), tabs (\t), and spaces.
 
 ## `tr`: Translating Characters
 
@@ -263,7 +263,7 @@ wc -lwc file.txt
    sort -u file.txt` # removes duplicate lines.
    ```
 
-> [!TIP] <b> Remember:
+> [!TIP] 
 > The default sorting order is ascending, and the sorting is typically based on the first field unless you specify otherwise.
 
 ## `comm`: Comparing Files Line by Line
