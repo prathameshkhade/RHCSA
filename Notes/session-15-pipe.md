@@ -266,6 +266,39 @@ wc -lwc file.txt
 > [!TIP] <b> Remember:
 > The default sorting order is ascending, and the sorting is typically based on the first field unless you specify otherwise.
 
-## comm (compare)
+## `comm`: Comparing Files Line by Line
+
+**`comm`** is a command-line utility used to compare two files line by line and output the lines that are unique to each file or common to both.
+
+### Basic Usage
+
+```bash
+comm file1.txt file2.txt
+```
+
+This command will output three columns:
+
+1. Lines unique to `file1.txt`
+2. Lines unique to `file2.txt`
+3. Lines common to both files
+
+### Options
+
+* **-1:** Suppress column 1 (lines unique to `file1.txt`).
+* **-2:** Suppress column 2 (lines unique to `file2.txt`).
+* **-3:** Suppress column 3 (lines common to both files).
+
+### Example
+
+```bash
+comm -12 file1.txt file2.txt
+```
+
+This will output only the lines that are common to both `file1.txt` and `file2.txt`.
+
+> [!NOTE] <b> Additional Notes:
+> * The files must be sorted for `comm` to produce accurate results.
+> * You can use `sort` to sort files before comparing them with `comm`.
+
 
 ## sed
