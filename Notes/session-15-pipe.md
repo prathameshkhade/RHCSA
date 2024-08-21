@@ -182,10 +182,34 @@ cut -f 2-5 file.csv
 > [!TIP] <b> Remember:
 >The `-d` option is crucial for specifying the delimiter character used in your data. Common delimiters include commas (,), tabs (\t), and spaces.
 
+## `tr`: Translating Characters
 
-## tr
-### options:
-1.  d
+**`tr`** is a command-line utility used to translate characters from one set to another. It's often used for simple text manipulation tasks.
+
+### Common Options
+
+* **`-d:`** Delete characters.
+   * Example: `tr -d '[:punct:]' file.txt` removes punctuation characters from `file.txt`.
+
+### Examples
+
+* **Convert lowercase letters to uppercase:**
+  ```bash
+  tr 'a-z' 'A-Z' < file.txt
+  ```
+* **Remove all vowels from a file:**
+  ```bash
+  tr -d 'aeiouAEIOU' < file.txt
+  ```
+* **Replace spaces with underscores:**
+  ```bash
+  tr ' ' '_' < file.txt
+  ```
+
+> [!NOTE]
+> `tr` can also be used to squeeze repeated characters or translate characters based on a one-to-one mapping.
+
+
 ## wc
 ### options:
 1.  l
