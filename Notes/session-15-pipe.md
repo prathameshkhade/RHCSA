@@ -210,11 +210,31 @@ cut -f 2-5 file.csv
 > `tr` can also be used to squeeze repeated characters or translate characters based on a one-to-one mapping.
 
 
-## wc
-### options:
-1.  l
-2.  w
-3.  c
+## `wc`: Word Count
+
+**`wc`** is a command-line utility used to count the number of lines, words, and characters in a file or standard input.
+
+### Common Options
+
+1. **`-l:`** Count the number of lines.
+   * Example: `wc -l file.txt` counts the number of lines in `file.txt`.
+2. **`-w:`** Count the number of words.
+   * Example: `wc -w file.txt` counts the number of words in `file.txt`.
+3. **`-c:`** Count the number of characters.
+   * Example: `wc -c file.txt` counts the number of characters in `file.txt`.
+
+### Combining Options
+
+You can combine these options to get multiple counts:
+
+Example: 
+```bash 
+wc -lwc file.txt
+# counts the number of lines, words, and characters in file.txt.
+```
+
+> [!NOTE] 
+> The definition of a "word" can vary depending on the locale settings and other factors. However, `wc` generally uses whitespace (spaces, tabs, newlines) to delimit words.
 
 ## sort
 ### options:
