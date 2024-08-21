@@ -376,6 +376,6 @@ This command substitutes the first occurrence of `pattern` with `replacement` in
   sed '/^#/i\new line' file.txt
   ```
 
-> [!NOTE] <b> Remember:
+> [!NOTE]
 > `sed` is a powerful tool with many advanced features. Refer to the `sed` manual page for a complete list of options and examples.
 
