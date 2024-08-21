@@ -27,25 +27,62 @@ In this example:
 Here's a breakdown of some frequently used options:
 
 1. **`-i:`** Ignore case.
-   * Example: `grep -i "hello" myfile.txt` searches for "hello" or "Hello" regardless of case.
+
+    ```bash
+    grep -i "hello" myfile.txt  # Searches for "hello" or "Hello" regardless of case.
+    ```
+
 2. **`-v:`** Invert match.
-   * Example: `grep -v "error" logfile.txt` displays lines that *don't* contain "error".
+
+    ```bash
+    grep -v "error" logfile.txt  # Displays lines that *don't* contain "error".
+    ```
+
 3. **`-c:`** Count matches.
-   * Example: `grep -c "pattern" file.txt` counts the number of lines containing "pattern".
+
+    ```bash
+    grep -c "pattern" file.txt  # Counts the number of lines containing "pattern".
+    ```
+
 4. **`-e:`** Extended regular expressions.
-   * Example: `grep -e "pattern1\|pattern2" file.txt` searches for either "pattern1" or "pattern2".
+
+    ```bash
+    grep -e "pattern1\|pattern2" file.txt  # Searches for either "pattern1" or "pattern2".
+    ```
     > [!NOTE] 
-    > **You can also use the `egrep` command which is equivalent to `grep -e`**
+    > **You can also use the `egrep` command which is equivalent to `grep -e**
+
 5. **`-h:`** Suppress file names.
-   * Example: `grep -h "pattern" file1.txt file2.txt` doesn't prepend file names to matches.
+
+    ```bash
+    grep -h "pattern" file1.txt file2.txt  # Doesn't prepend file names to matches.
+    ```
+
 6. **`-H:`** Print file names with matches.
-   * Example: `grep -H "pattern" file1.txt file2.txt` prints the filename before each match.
-7. **`-A `num:** Print lines after the match.
-   * Example: `grep -A 2 "pattern" file.txt` prints the matching line plus two lines after it.
-8. **`-B `num:** Print lines before the match.
-   * Example: `grep -B 2 "pattern" file.txt` prints the matching line plus two lines before it.
-9. **`-C `num:** Print lines before and after the match.
-   * Example: `grep -C 2 "pattern" file.txt` prints the matching line plus two lines before and after it.
+
+    ```bash
+    grep -H "pattern" file1.txt file2.txt  # Prints the filename before each match.
+    ```
+
+7. **`-A <num>`:** Print lines after the match.
+
+    ```bash
+    grep -A 2 "pattern" file.txt  # Prints the matching line plus two lines after it.
+    ```
+
+8. **`-B <num>`:** Print lines before the match.
+
+    ```bash
+    grep -B 2 "pattern" file.txt  # Prints the matching line plus two lines before it.
+    ```
+
+9. **`-C <num>`:** Print lines before and after the match.
+
+    ```bash
+    grep -C 2 "pattern" file.txt  # Prints the matching line plus two lines before and after it.
+    ```
+
+
 
 > [!NOTE]  
 > **These are just a few of the many options available for `grep`. Refer to the `grep` manual page (`man grep`) for a complete list and detailed explanations.**
