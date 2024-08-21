@@ -236,13 +236,35 @@ wc -lwc file.txt
 > [!NOTE] 
 > The definition of a "word" can vary depending on the locale settings and other factors. However, `wc` generally uses whitespace (spaces, tabs, newlines) to delimit words.
 
-## sort
-### options:
-1.  r
-2.  n
-3.  h
-4.  o
-5.  u
+## `sort`: Sorting Text Data
+
+**`sort`** is a command-line utility used to sort lines of text based on various criteria.
+
+### Common Options
+
+1. **`-r:`** Reverse the sort order.
+   ```bash 
+   sort -r file.txt` # sorts the lines in descending order.
+   ```
+2. **`-n:`** Sort numerically.
+   ```bash 
+   sort -n file.txt` # sorts lines based on the numeric value of the first field.
+   ```
+3. **`-h:`** Sort human-readable numbers.
+   ```bash 
+   sort -h file.txt` # sorts lines based on human-readable numbers (e.g., "100K", "2M").
+   ```
+4. **`-o:`** Output to a file.
+   ```bash 
+   sort -o sorted_file.txt file.txt` # sorts `file.txt` and saves the result to `sorted_file.txt`.
+   ```
+5. **`-u:`** Unique.
+   ```bash 
+   sort -u file.txt` # removes duplicate lines.
+   ```
+
+> [!TIP] <b> Remember:
+> The default sorting order is ascending, and the sorting is typically based on the first field unless you specify otherwise.
 
 ## comm (compare)
 
