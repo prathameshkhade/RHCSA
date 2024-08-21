@@ -301,4 +301,81 @@ This will output only the lines that are common to both `file1.txt` and `file2.t
 > * You can use `sort` to sort files before comparing them with `comm`.
 
 
-## sed
+## `sed`: A Stream Editor
+
+**`sed`** (Stream Editor) is a powerful command-line tool used to manipulate text streams. It can edit, filter, and transform text based on regular expressions.
+
+### Basic Usage
+
+The general syntax for `sed` is:
+
+```bash
+sed 's/pattern/replacement/' file.txt
+```
+
+This command substitutes the first occurrence of `pattern` with `replacement` in `file.txt`.
+
+### Common Options
+
+* **`-e:`** Execute multiple commands.
+* **`-n:`** Suppress automatic printing of lines.
+* **`-i:`** Edit files in-place.
+* **`-f:`** Read commands from a file.
+
+### Basic Operations
+
+1. **Substitution:**
+   * Replace a pattern with a replacement string:
+     ```bash
+     sed 's/old_string/new_string/' file.txt
+     ```
+   * Replace all occurrences:
+     ```bash
+     sed 's/old_string/new_string/g' file.txt
+     ```
+   * Use backreferences:
+     ```bash
+     sed 's/\([a-z]\)\([A-Z]\)/\2\1/' file.txt
+     ```
+2. **Deletion:**
+   * Delete lines matching a pattern:
+     ```bash
+     sed '/pattern/d' file.txt
+     ```
+   * Delete lines containing a specific character:
+     ```bash
+     sed '/^$/d' file.txt  # Delete empty lines
+     ```
+3. **Insertion:**
+   * Insert text before a pattern:
+     ```bash
+     sed '/pattern/i\new text' file.txt
+     ```
+   * Insert text after a pattern:
+     ```bash
+     sed '/pattern/a\new text' file.txt
+     ```
+4. **Changing:**
+   * Change the first character of each line to uppercase:
+     ```bash
+     sed 's/^./\u&/' file.txt
+     ```
+
+### Examples
+
+* **Replace all occurrences of "old" with "new":**
+  ```bash
+  sed 's/old/new/g' file.txt
+  ```
+* **Delete lines containing "error":**
+  ```bash
+  sed '/error/d' file.txt
+  ```
+* **Insert a new line before lines starting with "#":**
+  ```bash
+  sed '/^#/i\new line' file.txt
+  ```
+
+> [!NOTE] <b> Remember:
+> `sed` is a powerful tool with many advanced features. Refer to the `sed` manual page for a complete list of options and examples.
+
