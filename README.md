@@ -10,4 +10,5 @@ I am preparing for the RHCSA exam and these are the notes I have prepared for my
 15.  [Pipe and Filtering](Notes/session-15-pipeFilter.md)
 ### Basics of Unix commands:
 16.  [System Utilities](Notes/session-16-systemUtilities.md)
-17.  [Find Command](Notes/session-17-find.md)
+     -   [Find Command](Notes/find.md)
+17. [Regular Expression]()
