@@ -11,4 +11,5 @@ I am preparing for the RHCSA exam and these are the notes I have prepared for my
 ### Basics of Unix commands:
 16.  [System Utilities](Notes/session-16-systemUtilities.md)
      -   [`find` Command](Notes/find.md)
-17.  [Regular Expression using `grep`](Notes/sesssion-17-regularExpression.md)
+17.  [Regular Expression using `grep`](Notes/session-17-regularExpression.md)
+18.  [`vi` Editor](Notes/session-18-viEditor.md)
