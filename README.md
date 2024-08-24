@@ -11,4 +11,3 @@ I am preparing for the RHCSA exam and these are the notes I have prepared for my
 ### Basics of Unix commands:
 16.  [System Utilities](Notes/session-16-systemUtilities.md)
      -   [Find Command](Notes/find.md)
-17. [Regular Expression]()
