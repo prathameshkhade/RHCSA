@@ -1,7 +1,4 @@
-# Lecture-13 
-
-# File Globbing
-
+# Session 13: File Globbing
 
 ## What is File Globbing?
 File globbing means regression expressions. These are called as the `meta-characters` and also known as `wildcard characters` which are nothing but they are some keywords which are reserved for some specific pupose and they have a special meaning.
@@ -26,7 +23,7 @@ Example: \[ matches the opening square bracket literally.
 *   ***.log:** Matches all files ending with `.log`.
 *   **report_?.txt:** Matches files like `report_1.txt`, `report_2.txt`, etc.
 *   **[abc]123.txt:** Matches `a123.txt`, `b123.txt`, or `c123.txt`.
-[0-9][0-9].txt: Matches two-digit numbers followed by `.txt`.
+*   **[0-9][0-9].txt:** Matches two-digit numbers followed by `.txt`.
 *   **Remember:** Globbing is `case-sensitive` by default. To match both uppercase and lowercase letters, use [a-zA-Z].
 
 #### By understanding these basic patterns, you can efficiently manage and manipulate files in your system.
