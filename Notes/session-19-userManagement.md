@@ -1,6 +1,6 @@
 # Session 19: User Management
 
-
+## Basics
 **`su`:** Switch user
 
 ```bash
@@ -81,8 +81,80 @@ This command prompts you to change your own password.
 > To use these options, you typically need to have `sudo` privileges.
 
 
-shadow and group files
-#### detailes of a line info in passwd and shadow and group: explain each word meaning in each file
+## Understanding the `passwd`, `shadow`, and `group` Files
+
+### 1.  `passwd` File
+
+The `/etc/passwd` file contains information about user accounts. Each line represents a user. A typical line looks like this:
+
+```
+username:x:UID:GID:GECOS:home_directory:shell
+```
+
+* **Username:** The login name of the user.
+* **x:** Placeholder for the encrypted password (now stored in the `shadow` file).
+* **UID:** Unique user ID number.
+* **GID:** Primary group ID number.
+* **GECOS:** Comma-separated fields containing information about the user (e.g., full name, room number).
+* **home_directory:** Path to the user's home directory.
+* **shell:** Default login shell for the user.
+
+### 2.  `shadow` File
+
+The `/etc/shadow` file contains encrypted password information for user accounts. Each line corresponds to a user in the `passwd` file.
+
+```
+username:encrypted_password:last_changed:min_days:max_days:warn_days:inactive_days:expire_days:reserved
+```
+
+* **Username:** The login name of the user.
+* **Encrypted password:** The encrypted password hash.
+* **Last changed:** Date of the last password change.
+* **Minimum password age:** Number of days before the password can be changed.
+* **Maximum password age:** Number of days before the password must be changed.
+* **Warning days:** Number of days before password expiration that a warning is issued.
+* **Inactive days:** Number of days of inactivity before the account is disabled.
+* **Expiration days:** Date when the account expires.
+* **Reserved:** For future use.
+
+### 3.  `group` File
+
+The `/etc/group` file contains information about groups. Each line represents a group.
+
+```
+group_name:x:GID:member_list
+```
+
+* **group_name:** The name of the group.
+* **x:** Placeholder for the encrypted password (not used in modern systems).
+* **GID:** Group ID number.
+* **member_list:** Comma-separated list of users belonging to the group.
+
+### **Example:**
+
+Let's assume a line from each file:
+
+**`/etc/passwd`:**
+```
+john:x:1000:1000:John Doe:/home/john:/bin/bash
+```
+
+**`/etc/shadow`:**
+```
+john:$6$salt$hash:1685392000:0:90:7:0:0:
+```
+
+**`/etc/group`:**
+```
+users:x:1001:john,mary,bob
+```
+
+In this example:
+* **John Doe** is a user with UID 1000 and primary group 1000.
+* The user's password was last changed on October 1, 2023 (assuming Unix timestamp 1685392000).
+* The password must be changed within 90 days.
+* The user belongs to the "users" group, along with "mary" and "bob".
+
 
 
 ## Adding user
