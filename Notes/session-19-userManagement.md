@@ -1,6 +1,7 @@
 # Session 19: User Management
 
-## Basics
+## Basics commands
+
 **`su`:** Switch user
 
 ```bash
@@ -73,9 +74,21 @@ This command prompts you to change your own password.
 
 5. **-S, --status:** Report password status on the named account.
    ```bash
-   $ sudo passwd -S olduser
+   $ sudo passwd -S atharv
+
+   atharv P 2024-08-30 0 99999 7 -1
    ```
-   This will display the password status for the user "olduser", including information like expiration date, password age, and whether the account is locked.
+
+   * **atharv:** The username.
+   * **P:** The password status. "P" indicates that the password is valid.
+   * **2024-08-30:** The last time the password was changed.
+   * **0:** The minimum number of days before the password can be changed.
+   * **99999:** The maximum number of days before the password must be changed (essentially no limit).
+   * **7:** The number of days before password expiration that a warning is issued.
+   * **-1:** The account expiration date (negative value indicates no expiration).
+
+In summary, this output shows that the user "atharv" has a valid password that was last changed on August 30, 2024. There are no restrictions on password changes, and the account does not have an expiration date.
+
 
 > [!NOTE] 
 > To use these options, you typically need to have `sudo` privileges.
