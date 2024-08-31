@@ -243,9 +243,32 @@ In this example:
    By using these options, you can tailor the creation of new user accounts to your specific needs and security requirements.
 
 
-## Removing user
-### userdel vs deluser
-Explain some very important options like -r which are frequently used. with example
+## `userdel` vs. `deluser`
+
+Both `userdel` and `deluser` are used to remove user accounts. However, `userdel` provides more options for customization.
+
+### Common Options
+
+* **-f:** Force removal even if the user is still logged in or files are not owned by the user.
+* **-r:** Remove the user's home directory and mail spool.
+* **-R:** Chroot to a specified directory before performing the removal.
+* **-P:** Specify a prefix directory for `/etc/*` files.
+* **-Z:** Remove any SELinux user mapping for the user.
+
+### Example: Removing the User "atharv"
+
+```bash
+$ sudo userdel -rf atharv
+
+[sudo] password for prathamesh:
+userdel: atharv mail spool (/var/mail/atharv) not found
+```
+
+This command will remove the user "atharv," including their home directory and mail spool. The `-r` option ensures that the user is completely removed, even if they are still logged in or if files are not owned by them.
+
+> [!NOTE]
+> Removing a user can have significant consequences. Ensure that you have a backup of any important data before proceeding.
+
 
 ## Modifying user
 ### usermod
