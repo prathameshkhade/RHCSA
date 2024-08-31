@@ -175,7 +175,7 @@ In this example:
     It will handle the all the things. It creates the user and it's group, selects the uid and gid, creates the home directory and ask for the password. 
 
     ```bash
-    $ sudo adduser atharv
+    $ sudo adduser atharv  # Adds a new user named "atharv" to the system.
 
     info: Adding user `atharv' ...
     info: Selecting UID/GID from range 1000 to 59999 ...
@@ -198,22 +198,50 @@ In this example:
     info: Adding user `atharv' to group `users' ...
     ```
 
-2.  **`useradd`:**
-    All the things are done manually. flexibility to customize the new user while creating
+      **Output Breakdown:**
 
-    ### **Options:**
-    1.  -c, --comment COMMENT         GECOS field of the new account
-    2.  -d, --home-dir HOME_DIR       home directory of the new account
-    3.  -g, --gid GROUP               name or ID of the primary group of the new account 
-    4.  -k, --skel SKEL_DIR           use this alternative skeleton directory
-    5.  -m, --create-home             create the user's home directory
-    6.  -s, --shell SHELL             login shell of the new account
-    7.  -M, --no-create-home          do not create the user's home directory
-    8.  -N, --no-user-group           do not create a group with the same name as the user
-    9.  -Z, --selinux-user SEUSER     use a specific SEUSER for the SELinux user mapping
+      * **`info: Adding user 'atharv' ...`:** The system is starting the process of creating the new user.
+      * **`info: Selecting UID/GID from range 1000 to 59999 ...`:** The system is choosing a unique user ID (UID) and group ID (GID) for the new user. These numbers are typically assigned sequentially to avoid conflicts.
+      * **`info: Adding new group 'atharv' (1002) ...`:** A new group with the same name as the user is created. This group will be the primary group for the new user.
+      * **`info: Adding new user 'atharv' (1002) with group 'atharv (1002)' ...`:** The new user is created with the specified UID, GID, and group membership.
+      * **`info: Creating home directory '/home/atharv' ...`:** A home directory is created for the new user. This directory will be the user's personal workspace.
+      * **`info: Copying files from '/etc/skel' ...`:** Essential files and configuration settings are copied from the `/etc/skel` directory to the new user's home directory, providing a basic environment for the user.
+      * **`New password:` and `Retype new password:`:** You are prompted to enter a new password for the user.
+      * **`passwd: password updated successfully`:** The password has been successfully set.
+      * **`Changing the user information for atharv`:** You are given the opportunity to modify the user's information, such as their full name, room number, and contact details.
+      * **`info: Adding new user 'atharv' to supplemental / extra groups 'users' ...`:** The user is added to additional groups, such as the "users" group, which may grant the user specific privileges.
 
-    ```bash 
-    $ sudo useradd atharv -c "part of QA team" -m -d /home/atharv -s /bin/sh
+2. **`useradd`** is a more granular command for creating new user accounts, allowing you to customize various aspects of the user.
+
+   **Options:**
+
+   1. **-c, --comment COMMENT:** Sets the GECOS field, which contains additional information about the user (e.g., full name, room number).
+   2. **-d, --home-dir HOME_DIR:** Specifies the home directory for the new user. If not specified, the default is `/home/username`.
+   3. **-g, --gid GROUP:** Sets the primary group for the new user. If not specified, a new group with the same name as the user is created.
+   4. **-k, --skel SKEL_DIR:** Uses an alternative skeleton directory for the user's home directory. By default, the `/etc/skel` directory is used.
+   5. **-m, --create-home:** Creates the user's home directory. If not specified, the home directory is not created.
+   6. **-s, --shell SHELL:** Sets the login shell for the user. If not specified, the default login shell is used.
+   7. **-M, --no-create-home:** Prevents the creation of the user's home directory.
+   8. **-N, --no-user-group:** Prevents the creation of a group with the same name as the user.
+   9. **-Z, --selinux-user SEUSER:** Specifies the SELinux user mapping for the new user (relevant for SELinux-enabled systems).
+
+   **Example:**
+
+   ```bash
+   $ sudo useradd atharv -c "Atharv Hiremath, QA Team" -m -d /home/atharv -g QnA -s /bin/bash
+   ```
+
+   This command creates a new user named "atharv" with the following settings:
+
+   * **GECOS:** "Atharv Hiremath, QA Team"
+   * **Home directory:** `/home/atharv`
+   * **Primary group:** "QnA"
+   * **Login shell:** `/bin/bash`
+
+   The `-m` option ensures that the home directory is created, and the `-g` option assigns the user to the "QnA" group.
+
+   By using these options, you can tailor the creation of new user accounts to your specific needs and security requirements.
+
 
 ## Removing user
 ### userdel vs deluser
