@@ -5,7 +5,9 @@
 **`su`:** Switch user
 
 ```bash
-$ sudo su root  # Switch to the root user (requires sudo privileges)
+$ sudo su prathamesh  # Switch to the prathamesh user (requires sudo privileges) - Doesn't loads the user's environment variables and configuration files.
+
+$ sudo su - prathamesh # Switch to the prathamesh user - It loads the user's environment variables and configuration files, providing an interactive login shell.
 ```
 
 **`whoami` vs. `who`:**
@@ -13,16 +15,26 @@ $ sudo su root  # Switch to the root user (requires sudo privileges)
 * `whoami`: Displays your current username.
   ```bash
   $ whoami  # Output: "your_username"
+
+  prathamesh
   ```
 * `who`: Lists all logged-in users.
   ```bash
   $ who  # Output: "user terminal date time"
+
+  prathamesh tty1         2024-08-31 17:19
+  prathamesh pts/0        2024-08-31 18:18 (192.168.1.206)
   ```
 
 **`w`:** Displays information about logged-in users.
 
 ```bash
 $ w  # Output: "user terminal uptime CPU load average users processes"
+
+  18:26:33 up  1:07,  2 users,  load average: 0.00, 0.00, 0.00
+USER        TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
+prathamesh  tty1      17:19    1:03m  0.10s  0.10s -bash
+prathamesh  pts/0     18:18    0.00s  0.72s  0.01s w
 ```
 
 **`id`:** Displays user ID, group IDs, and other information.
@@ -50,44 +62,81 @@ This command prompts you to change your own password.
 
 1. **-a, --all:** Report password status on all accounts.
    ```bash
-   $ sudo passwd -a
+   $ sudo passwd -a # Don't know why, but this option is not working.
    ```
    This will display the password status for all user accounts on the system.
 
 2. **-d, --delete:** Delete the password for the named account.
    ```bash
-   $ sudo passwd -d olduser
+   $ sudo passwd -d atharv
+
+   [sudo] password for prathamesh:
+   Removing password for user atharv.
+   passwd: Success
    ```
-   This will delete the password for the user "olduser", effectively disabling the account.
+   This will delete the password for the user "atharv", effectively disabling the account.
 
 3. **-e, --expire:** Force expire the password for the named account.
    ```bash
-   $ sudo passwd -e olduser
+   $ sudo passwd -e atharv
+
+   Expiring password for user atharv.
+   passwd: Success
    ```
-   This will immediately expire the password for the user "olduser", requiring them to change it upon next login.
+   This will immediately expire the password for the user "atharv", requiring them to change it upon next login.
 
 4. **-n, --mindays MIN_DAYS:** Set the minimum password age.
    ```bash
-   $ sudo passwd -n 10 user
-   ```
-   This sets the minimum password age for the user "user" to 10 days.
+   $ sudo passwd -n 14 atharv
 
-5. **-S, --status:** Report password status on the named account.
+   Adjusting aging data for user atharv.
+   passwd: Success
+   ```
+   This sets the minimum password age for the user "atharv" to 14 days.
+
+5. **-x, --maximum DAYS:** Set the maximum password age.
+   ```bash
+   $ sudo passwd -x 30 atharv
+
+   Adjusting aging data for user atharv.
+   passwd: Success
+   ```
+   This sets the maximum password age for the user "atharv" to 30 days.
+
+6. **-i, --inactive DAYS:** Specifies the number of inactive days for a user.
+   ```bash
+   $ sudo passwd -i 5 atharv
+
+   Adjusting aging data for user atharv.
+   passwd: Success
+   ```
+   This will set the inactivity period to 5 days for the user "atharv" after which the account will be disabled if the password is not changed.
+
+7. **-w, --warning DAYS:** Set the number of days in advance the user will begin receiving warnings that her password will expire.
+   ```bash
+   $ sudo passwd -w 3 atharv
+
+   Adjusting aging data for user atharv.
+   passwd: Success
+   ```
+   This will gives the warning message for changing the password before 3 days of minimum days
+
+8. **-S, --status:** Report password status on the named account.
    ```bash
    $ sudo passwd -S atharv
 
-   atharv P 2024-08-30 0 99999 7 -1
+   atharv NP 2024-08-31 14 30 3 5 (Empty password.)
    ```
 
-   * **atharv:** The username.
-   * **P:** The password status. "P" indicates that the password is valid.
-   * **2024-08-30:** The last time the password was changed.
-   * **0:** The minimum number of days before the password can be changed.
-   * **99999:** The maximum number of days before the password must be changed (essentially no limit).
-   * **7:** The number of days before password expiration that a warning is issued.
-   * **-1:** The account expiration date (negative value indicates no expiration).
+   -  `atharv`: The username for which the status is being checked.
+   -  `NP`: It stand for "No Password", indicating that the user does not have a password set.
+   -  `2024-08-31`: The date when the password was last changed.
+   -  `14`: Then minimum age (days) before the password can be changed again.
+   -  `30`: Then maximum age (days) before the password can be changed again.
+   -  `3`: Then warning period (days) before the password has to be changed.
+   -  `5`: The inactivity period (days) after which the account will be disabled if the password is not changed the password can be changed again.
 
-In summary, this output shows that the user "atharv" has a valid password that was last changed on August 30, 2024. There are no restrictions on password changes, and the account does not have an expiration date.
+   The summary of this is, the user `atharv` dows not have a password set (Empty password). The passwrod status was last changed  on `2024-08-31`. The password cannot be changed for 14 days, must be changed after 30 days, has a warning period of 3 days, and the account will be disabled after 5 days of inactivity if the password is not changed.
 
 
 > [!NOTE] 
@@ -243,8 +292,8 @@ In this example:
    By using these options, you can tailor the creation of new user accounts to your specific needs and security requirements.
 
 
-## `usermod` 
-This command is used if you want to update some creadentials in the user's account.
+## Modifying user
+`usermod`: This command is used if you want to update some creadentials in the user's account.
 
 ### **Options:**
   * **`-c:`** Change the GECOS field (comment) for the user.
@@ -257,7 +306,7 @@ This command is used if you want to update some creadentials in the user's accou
 **Example:**
 
 ```bash
-sudo usermod -c "Atharv Hiremath, Updated Information" -d /home/atharv/new_home -e 2025-01-01 -L atharv
+$ sudo usermod -c "Atharv Hiremath, Updated Information" -d /home/atharv/new_home -e 2025-01-01 -L atharv
 ```
 
 This command modifies the user "atharv" with the following changes:
