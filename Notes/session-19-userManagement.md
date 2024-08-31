@@ -243,17 +243,41 @@ In this example:
    By using these options, you can tailor the creation of new user accounts to your specific needs and security requirements.
 
 
+## `usermod` 
+This command is used if you want to update some creadentials in the user's account.
+
+### **Options:**
+  * **`-c:`** Change the GECOS field (comment) for the user.
+  * **`-d:`** Set a new home directory for the user.
+  * **`-e:`** Set an expiration date for the user account.
+  * **`-L:`** Lock the user account, preventing login.
+  * **`-U:`** Unlock the user account.
+  * **`-m:`** Move the contents of the home directory to the new location (when used with -d).
+
+**Example:**
+
+```bash
+sudo usermod -c "Atharv Hiremath, Updated Information" -d /home/atharv/new_home -e 2025-01-01 -L atharv
+```
+
+This command modifies the user "atharv" with the following changes:
+
+* Sets the GECOS field to "Atharv Hiremath, Updated Information".
+* Changes the home directory to `/home/atharv/new_home`.
+* Sets the account expiration date to January 1, 2025.
+* Locks the user account, preventing login. 
+
 ## `userdel` vs. `deluser`
 
 Both `userdel` and `deluser` are used to remove user accounts. However, `userdel` provides more options for customization.
 
 ### Common Options
 
-* **-f:** Force removal even if the user is still logged in or files are not owned by the user.
-* **-r:** Remove the user's home directory and mail spool.
-* **-R:** Chroot to a specified directory before performing the removal.
-* **-P:** Specify a prefix directory for `/etc/*` files.
-* **-Z:** Remove any SELinux user mapping for the user.
+* **`-f:`** Force removal even if the user is still logged in or files are not owned by the user.
+* **`-r:`** Remove the user's home directory and mail spool.
+* **`-R:`** Chroot to a specified directory before performing the removal.
+* **`-P:`** Specify a prefix directory for `/etc/*` files.
+* **`-Z:`** Remove any SELinux user mapping for the user.
 
 ### Example: Removing the User "atharv"
 
@@ -270,11 +294,3 @@ This command will remove the user "atharv," including their home directory and m
 > Removing a user can have significant consequences. Ensure that you have a backup of any important data before proceeding.
 
 
-## Modifying user
-### usermod
-### options:
-1.  -c, --comment COMMENT         new value of the GECOS field
-2.  -d, --home HOME_DIR           new home directory for the user account
-3.  -e, --expiredate EXPIRE_DATE  set account expiration date to EXPIRE_DATE
-4.  -L, --lock                    lock the user account
-5.  -m, --move-home               move contents of the home directory to the new location (use only with -d)
