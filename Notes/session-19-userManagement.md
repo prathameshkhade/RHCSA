@@ -316,8 +316,8 @@ This command modifies the user "atharv" with the following changes:
 * Sets the account expiration date to January 1, 2025.
 * Locks the user account, preventing login. 
 
-## `userdel` vs. `deluser`
-
+## Deleting user
+### `userdel` vs. `deluser`: 
 Both `userdel` and `deluser` are used to remove user accounts. However, `userdel` provides more options for customization.
 
 ### Common Options
@@ -342,4 +342,68 @@ This command will remove the user "atharv," including their home directory and m
 > [!NOTE]
 > Removing a user can have significant consequences. Ensure that you have a backup of any important data before proceeding.
 
+## `sudoers` File: Managing the root preveleges in Linux
 
+The `sudoers` file uses a simple syntax to define rules that govern which users can execute commands with elevated privileges. Each line in the file represents a rule, typically following this format:
+
+```
+user_or_group host_list=(user_list:role_list) command_list
+```
+
+**Breakdown:**
+
+* **user_or_group:** Specifies the user or group that the rule applies to. You can use specific usernames or group names, or wildcards like `*` to match multiple users or groups.
+* **host_list:** Specifies the hosts from which the user can execute commands. You can use specific hostnames or IP addresses, or wildcards like `ALL` to allow access from all hosts.
+* **user_list:** Specifies the user or group that the command will be executed as. If not specified, the command will be executed as the root user.
+* **role_list:** Specifies the roles or privileges granted to the user. The `ALL` role grants all privileges, but you can also specify specific roles or commands.
+* **command_list:** Specifies the commands that the user is allowed to execute. You can use specific commands or wildcards to allow a range of commands.
+
+### Options
+
+The `sudoers` file supports various options to fine-tune permissions:
+
+* **NOPASSWD:** Allows the user to execute commands without entering a password.
+* **TIME:** Specifies a time window during which the user can use `sudo`.
+* **DAY:** Specifies the days of the week when the user can use `sudo`.
+* **HOST:** Specifies the hosts from which the user can use `sudo`.
+* **USER:** Specifies the user that the command will be executed as.
+* **RUNAS:** Specifies the user that the command will be executed as.
+
+### Location and Information
+
+The `sudoers` file is typically located in `/etc/sudoers`. It contains configuration rules that define which users can execute commands with elevated privileges.
+
+### Real-Life Examples for the `atharv` User
+
+**1. Granting full `sudo` privileges:**
+
+```
+atharv ALL=(ALL) ALL
+```
+
+**2. Allowing `atharv` to execute only specific commands:**
+
+```
+atharv ALL=(ALL) /usr/bin/apt /usr/bin/dpkg
+```
+
+**3. Setting a time limit for `atharv` to use `sudo`:**
+
+```
+atharv ALL=(ALL) ALL TIME=10:00-18:00
+```
+
+**4. Requiring a password for `atharv` to use `sudo`:**
+
+```
+atharv ALL=(ALL) ALL NOPASSWD=0
+```
+
+**5. Allowing `atharv` to execute commands as the root user:**
+
+```
+atharv ALL=(root) ALL
+```
+
+> [!IMPORTANT]
+> **Remember:** The `sudoers` file is a powerful tool, and modifying it incorrectly can lead to security vulnerabilities. Always exercise caution when editing this file and consult the `sudoers` manual page for more information.
