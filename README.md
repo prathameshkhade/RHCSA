@@ -14,3 +14,5 @@ I am preparing for the RHCSA exam and these are the notes I have prepared for my
 17.  [Regular Expression using `grep`](Notes/session-17-regularExpression.md)
 18.  [`vi` Editor](Notes/session-18-viEditor.md)
 19.  [User Management](Notes/session-19-userManagement.md)
+20.  [Password Management](Notes/session-20-passwordManagement.md)
+21.  [Group Management](Notes)
