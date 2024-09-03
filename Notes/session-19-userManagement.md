@@ -55,94 +55,6 @@ $ sudo apt update  # Update package lists with root privileges
 $ sudo visudo  # Edit the sudoers file (requires root privileges)
 ```
 
-## `passwd` Command 
-This command prompts you to change your own password.
-
-### Options
-
-1. **-a, --all:** Report password status on all accounts.
-   ```bash
-   $ sudo passwd -a # Don't know why, but this option is not working.
-   ```
-   This will display the password status for all user accounts on the system.
-
-2. **-d, --delete:** Delete the password for the named account.
-   ```bash
-   $ sudo passwd -d atharv
-
-   [sudo] password for prathamesh:
-   Removing password for user atharv.
-   passwd: Success
-   ```
-   This will delete the password for the user "atharv", effectively disabling the account.
-
-3. **-e, --expire:** Force expire the password for the named account.
-   ```bash
-   $ sudo passwd -e atharv
-
-   Expiring password for user atharv.
-   passwd: Success
-   ```
-   This will immediately expire the password for the user "atharv", requiring them to change it upon next login.
-
-4. **-n, --mindays MIN_DAYS:** Set the minimum password age.
-   ```bash
-   $ sudo passwd -n 14 atharv
-
-   Adjusting aging data for user atharv.
-   passwd: Success
-   ```
-   This sets the minimum password age for the user "atharv" to 14 days.
-
-5. **-x, --maximum DAYS:** Set the maximum password age.
-   ```bash
-   $ sudo passwd -x 30 atharv
-
-   Adjusting aging data for user atharv.
-   passwd: Success
-   ```
-   This sets the maximum password age for the user "atharv" to 30 days.
-
-6. **-i, --inactive DAYS:** Specifies the number of inactive days for a user.
-   ```bash
-   $ sudo passwd -i 5 atharv
-
-   Adjusting aging data for user atharv.
-   passwd: Success
-   ```
-   This will set the inactivity period to 5 days for the user "atharv" after which the account will be disabled if the password is not changed.
-
-7. **-w, --warning DAYS:** Set the number of days in advance the user will begin receiving warnings that her password will expire.
-   ```bash
-   $ sudo passwd -w 3 atharv
-
-   Adjusting aging data for user atharv.
-   passwd: Success
-   ```
-   This will gives the warning message for changing the password before 3 days of minimum days
-
-8. **-S, --status:** Report password status on the named account.
-   ```bash
-   $ sudo passwd -S atharv
-
-   atharv NP 2024-08-31 14 30 3 5 (Empty password.)
-   ```
-
-   -  `atharv`: The username for which the status is being checked.
-   -  `NP`: It stand for "No Password", indicating that the user does not have a password set.
-   -  `2024-08-31`: The date when the password was last changed.
-   -  `14`: Then minimum age (days) before the password can be changed again.
-   -  `30`: Then maximum age (days) before the password can be changed again.
-   -  `3`: Then warning period (days) before the password has to be changed.
-   -  `5`: The inactivity period (days) after which the account will be disabled if the password is not changed the password can be changed again.
-
-   The summary of this is, the user `atharv` dows not have a password set (Empty password). The passwrod status was last changed  on `2024-08-31`. The password cannot be changed for 14 days, must be changed after 30 days, has a warning period of 3 days, and the account will be disabled after 5 days of inactivity if the password is not changed.
-
-
-> [!NOTE] 
-> To use these options, you typically need to have `sudo` privileges.
-
-
 ## Understanding the `passwd`, `shadow`, and `group` Files
 
 ### 1.  `passwd` File
@@ -160,6 +72,9 @@ username:x:UID:GID:GECOS:home_directory:shell
 * **GECOS:** Comma-separated fields containing information about the user (e.g., full name, room number).
 * **home_directory:** Path to the user's home directory.
 * **shell:** Default login shell for the user.
+
+> [!TIP]
+> You can use `vipw` command to directly open the `/etc/passwd` file with vi editor.
 
 ### 2.  `shadow` File
 
