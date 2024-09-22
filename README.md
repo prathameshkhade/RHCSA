@@ -17,5 +17,7 @@ I am preparing for the RHCSA exam and these are the notes I have prepared for my
 19.  [User Management](Notes/session-19-userManagement.md)
 20.  [Password Management](Notes/session-20-passwordManagement.md)
 21.  [Group Management](Notes/session-21-groupManagement.md)
+#### Permissions
 22.  [Standard file permissions](Notes/session-22-filePermissions.md)
 23.  [Advanced file permissions](Notes/session-23-advancedFilePermissions.md)
+24.  [Access Control List](Notes/session-24-accessControlList.md)
