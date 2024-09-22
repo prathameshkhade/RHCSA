@@ -162,7 +162,3 @@ $ setfacl -m g:devs:rwx --no-mask ubuntu-server
 ```
 
 Using `--no-mask` ensures that the specified permissions are applied regardless of any existing mask limitations.
-
----
-
-Feel free to ask if you have more questions or need further details!
